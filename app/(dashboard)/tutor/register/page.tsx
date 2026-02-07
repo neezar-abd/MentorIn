@@ -40,7 +40,7 @@ export default function TutorRegisterPage() {
                 <CardDecorator>
                     <GraduationCap className="size-6" />
                 </CardDecorator>
-                <h1 className="mt-6 text-balance font-serif text-3xl font-medium">Jadi Tutor Sebaya</h1>
+                <h1 className="mt-6 text-balance font-serif text-3xl font-medium">Jadi Mentor di MentorIn</h1>
                 <p className="text-muted-foreground mx-auto mt-2 max-w-md text-sm">Bantu teman-teman kamu belajar dan dapatkan pengalaman mengajar yang berharga.</p>
             </div>
 

@@ -21,7 +21,7 @@ export default async function TutorsPage({ searchParams }: { searchParams: Promi
             {/* Header */}
             <div>
                 <h1 className="text-balance font-serif text-3xl font-medium">Cari Tutor</h1>
-                <p className="text-muted-foreground mt-2">Temukan tutor sebaya yang cocok untuk kamu.</p>
+                <p className="text-muted-foreground mt-2">Temukan mentor terbaik yang cocok untuk kamu.</p>
             </div>
 
             {/* Search + Subject Filter */}

@@ -7,7 +7,7 @@ const faqs = [
         a: 'MentorIn adalah platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan belajar. Siswa bisa menjadi tutor sekaligus belajar dari tutor lain.',
     },
     {
-        q: 'Apakah Tutor Sebaya gratis?',
+        q: 'Apakah MentorIn gratis?',
         a: 'Ya, platform ini sepenuhnya gratis untuk semua siswa. Tidak ada biaya pendaftaran maupun biaya per sesi.',
     },
     {
@@ -54,7 +54,7 @@ export default function FAQPage() {
                         {/* Header */}
                         <div className="max-w-2xl">
                             <h1 className="text-balance font-serif text-4xl font-medium">Pertanyaan Umum</h1>
-                            <p className="text-muted-foreground mt-4">Jawaban untuk pertanyaan yang sering ditanyakan tentang Tutor Sebaya.</p>
+                            <p className="text-muted-foreground mt-4">Jawaban untuk pertanyaan yang sering ditanyakan tentang MentorIn.</p>
                         </div>
 
                         {/* FAQ List */}

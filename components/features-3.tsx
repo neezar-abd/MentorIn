@@ -7,7 +7,7 @@ export default function Features() {
         <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
             <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Kenapa Pilih Tutor Sebaya?</h2>
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Kenapa Pilih MentorIn?</h2>
                     <p className="mt-4">Platform yang memudahkan kamu belajar bersama teman sebaya dengan cara yang lebih asik dan efektif.</p>
                 </div>
                 <Card className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16">

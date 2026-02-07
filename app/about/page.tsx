@@ -56,7 +56,7 @@ export default function AboutPage() {
                             <h2 className="font-serif text-2xl font-medium">Masalah yang Kami Selesaikan</h2>
                             <div className="rounded-(--radius) border p-6 md:p-8">
                                 <p className="text-muted-foreground leading-relaxed">
-                                    Banyak siswa yang kesulitan di mata pelajaran tertentu merasa malu untuk bertanya ke guru. Padahal, teman sekelas mereka yang pintar sebenarnya bisa membantu. Sayangnya, tidak ada sistem yang memfasilitasi ini secara terstruktur. Tutor Sebaya hadir untuk menjembatani gap tersebut.
+                                    Banyak siswa yang kesulitan di mata pelajaran tertentu merasa malu untuk bertanya ke guru. Padahal, teman sekelas mereka yang pintar sebenarnya bisa membantu. Sayangnya, tidak ada sistem yang memfasilitasi ini secara terstruktur. MentorIn hadir untuk menjembatani gap tersebut.
                                 </p>
                             </div>
                         </section>

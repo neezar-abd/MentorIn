@@ -119,7 +119,7 @@ export default function Footer() {
 
                 {/* Bottom */}
                 <div className="text-muted-foreground mt-12 flex flex-col items-center justify-between gap-2 border-t pt-8 text-sm md:flex-row">
-                    <p>&copy; {currentYear} Tutor Sebaya. All rights reserved.</p>
+                    <p>&copy; {currentYear} MentorIn. All rights reserved.</p>
                     <p>Made for Indonesian Students</p>
                 </div>
             </div>
