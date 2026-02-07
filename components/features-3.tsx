@@ -4,10 +4,10 @@ import { ReactNode } from 'react'
 
 export default function Features() {
     return (
-        <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
+        <section className="bg-zinc-50 py-12 md:py-20 dark:bg-transparent">
             <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Kenapa Pilih MentorIn?</h2>
+                    <h2 className="text-balance text-4xl font-medium lg:text-5xl">Kenapa Pilih MentorIn?</h2>
                     <p className="mt-4">Platform yang memudahkan kamu belajar bersama teman sebaya dengan cara yang lebih asik dan efektif.</p>
                 </div>
                 <Card className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16">
@@ -20,7 +20,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Tutor Berpengalaman</h3>
+                            <h3 className="mt-6 font-medium font-sans">Tutor Berpengalaman</h3>
                         </CardHeader>
 
                         <CardContent>
@@ -37,7 +37,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Jadwal Fleksibel</h3>
+                            <h3 className="mt-6 font-medium font-sans">Jadwal Fleksibel</h3>
                         </CardHeader>
 
                         <CardContent>
@@ -54,7 +54,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Rating & Review</h3>
+                            <h3 className="mt-6 font-medium font-sans">Rating & Review</h3>
                         </CardHeader>
 
                         <CardContent>

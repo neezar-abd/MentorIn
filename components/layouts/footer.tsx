@@ -7,9 +7,9 @@ export default function Footer() {
     return (
         <footer className="border-t py-12 md:py-16">
             <div className="mx-auto max-w-5xl px-6">
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                     {/* Brand */}
-                    <div className="col-span-2 md:col-span-1">
+                    <div className="col-span-1">
                         <Link
                             href="/"
                             aria-label="home"
@@ -23,13 +23,20 @@ export default function Footer() {
 
                     {/* Navigasi */}
                     <div>
-                        <h3 className="font-medium">Navigasi</h3>
+                        <h3 className="font-medium font-sans">Navigasi</h3>
                         <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
                             <li>
                                 <Link
-                                    href="/about"
+                                    href="/login"
                                     className="hover:text-accent-foreground duration-150">
-                                    Tentang Kami
+                                    Masuk
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/register"
+                                    className="hover:text-accent-foreground duration-150">
+                                    Daftar
                                 </Link>
                             </li>
                             <li>
@@ -49,71 +56,21 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Bantuan */}
+                    {/* Info */}
                     <div>
-                        <h3 className="font-medium">Bantuan</h3>
-                        <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
-                            <li>
-                                <Link
-                                    href="/faq"
-                                    className="hover:text-accent-foreground duration-150">
-                                    FAQ
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/contact"
-                                    className="hover:text-accent-foreground duration-150">
-                                    Hubungi Kami
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/privacy"
-                                    className="hover:text-accent-foreground duration-150">
-                                    Kebijakan Privasi
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/terms"
-                                    className="hover:text-accent-foreground duration-150">
-                                    Syarat & Ketentuan
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Kontak */}
-                    <div>
-                        <h3 className="font-medium">Kontak</h3>
-                        <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
-                            <li>
-                                <a
-                                    href="mailto:info@tutorsebaya.com"
-                                    className="hover:text-accent-foreground duration-150">
-                                    info@tutorsebaya.com
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://instagram.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-accent-foreground duration-150">
-                                    Instagram
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://twitter.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-accent-foreground duration-150">
-                                    Twitter
-                                </a>
-                            </li>
-                        </ul>
+                        <h3 className="font-medium font-sans">Tentang</h3>
+                        <p className="text-muted-foreground mt-4 text-sm">
+                            MentorIn menghubungkan siswa dengan tutor sebaya yang kompeten untuk belajar lebih efektif dan menyenangkan.
+                        </p>
+                        <p className="text-muted-foreground mt-4 text-sm">
+                            Email: <a href="mailto:nizarabdurr@gmail.com" className="hover:text-accent-foreground">nizarabdurr@gmail.com</a>
+                        </p>
+                        <p className="text-muted-foreground mt-2 text-sm">
+                            Web: <a href="https://neezar.tech" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground">neezar.tech</a>
+                        </p>
+                        <p className="text-muted-foreground mt-2 text-sm">
+                            IG: <a href="https://instagram.com/neezar_abd" target="_blank" rel="noopener noreferrer" className="hover:text-accent-foreground">@neezar_abd</a>
+                        </p>
                     </div>
                 </div>
 
