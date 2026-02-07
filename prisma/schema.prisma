@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  password      String
+  role          Role      @default(STUDENT)
+  class         String?   // Kelas (11 IPA 1, 12 IPS 2)
+  avatarUrl     String?
+  
+  // Relasi sebagai Tutor
+  tutorProfile  TutorProfile?
+  
+  // Relasi sebagai Student
+  requests      Request[]
+  reviews       Review[]
+  notifications Notification[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum NotificationType {
+  REQUEST_NEW        // Tutor dapat request baru
+  REQUEST_APPROVED   // Student: request disetujui
+  REQUEST_REJECTED   // Student: request ditolak
+  REQUEST_COMPLETED  // Student: sesi selesai
+  REQUEST_CANCELLED  // Tutor: request dibatalkan
+  REVIEW_RECEIVED    // Tutor: dapat review baru
+  TUTOR_VERIFIED     // Tutor: profil diverifikasi
+  TUTOR_REJECTED     // Tutor: profil ditolak
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  title     String
+  message   String
+  link      String?          // URL tujuan saat diklik
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  @@index([userId, isRead])
+  @@index([userId, createdAt])
+}
+
+enum Role {
+  STUDENT
+  TUTOR
+  ADMIN
+}
+
+model TutorProfile {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  subjects      String[]  // ["Matematika", "Fisika"]
+  bio           String?
+  availability  Json      // {senin: ["15:00-17:00"], selasa: ["19:00-21:00"]}
+  isVerified    Boolean   @default(false)
+  rating        Float     @default(0)
+  totalSessions Int       @default(0)
+  
+  requests      Request[]
+  reviews       Review[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Request {
+  id            String    @id @default(cuid())
+  
+  // Student yang request
+  studentId     String
+  student       User      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  
+  // Tutor yang dipilih
+  tutorId       String
+  tutor         TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  
+  subject       String
+  topic         String    // "Integral Tentu"
+  mode          Mode      // ONLINE / OFFLINE
+  location      String?   // "Perpustakaan" atau "Zoom"
+  scheduledAt   DateTime
+  duration      Int       @default(60) // dalam menit
+  notes         String?
+  
+  status        RequestStatus @default(PENDING)
+  
+  // Review setelah sesi selesai
+  review        Review?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum Mode {
+  ONLINE
+  OFFLINE
+}
+
+enum RequestStatus {
+  PENDING      // Menunggu approval tutor
+  APPROVED     // Disetujui
+  REJECTED     // Ditolak
+  COMPLETED    // Sesi selesai
+  CANCELLED    // Dibatalkan
+}
+
+model Review {
+  id            String    @id @default(cuid())
+  requestId     String    @unique
+  request       Request   @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  
+  studentId     String
+  student       User      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  
+  tutorId       String
+  tutor         TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  
+  rating        Int       // 1-5
+  comment       String?
+  
+  createdAt     DateTime  @default(now())
+}
