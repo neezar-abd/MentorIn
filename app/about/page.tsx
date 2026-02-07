@@ -45,9 +45,9 @@ export default function AboutPage() {
                     <div className="space-y-16">
                         {/* Header */}
                         <div className="max-w-2xl">
-                            <h1 className="text-balance font-serif text-4xl font-medium">Tentang Tutor Sebaya</h1>
+                            <h1 className="text-balance font-serif text-4xl font-medium">Tentang MentorIn</h1>
                             <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-                                Tutor Sebaya adalah platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan. Kami percaya bahwa belajar dari teman sebaya bisa lebih efektif karena tidak ada rasa canggung atau malu.
+                                MentorIn adalah platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan. Kami percaya bahwa belajar dari teman sebaya bisa lebih efektif karena tidak ada rasa canggung atau malu.
                             </p>
                         </div>
 
