@@ -3,8 +3,8 @@ import Footer from '@/components/layouts/footer'
 
 const faqs = [
     {
-        q: 'Apa itu Tutor Sebaya?',
-        a: 'Tutor Sebaya adalah platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan belajar. Siswa bisa menjadi tutor sekaligus belajar dari tutor lain.',
+        q: 'Apa itu MentorIn?',
+        a: 'MentorIn adalah platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan belajar. Siswa bisa menjadi tutor sekaligus belajar dari tutor lain.',
     },
     {
         q: 'Apakah Tutor Sebaya gratis?',

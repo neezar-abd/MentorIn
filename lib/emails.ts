@@ -1,4 +1,4 @@
-// Reusable email templates for Tutor Sebaya
+// Reusable email templates for MentorIn
 
 const baseStyle = `
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -23,11 +23,11 @@ function layout(content: string) {
     return `
     <div style="${baseStyle}">
       <div style="margin-bottom: 24px;">
-        <strong style="font-size: 18px;">📚 Tutor Sebaya</strong>
+        <strong style="font-size: 18px;">📚 MentorIn</strong>
       </div>
       ${content}
       <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #e4e4e7; font-size: 12px; color: #71717a;">
-        <p>Email ini dikirim otomatis oleh Tutor Sebaya. Jangan membalas email ini.</p>
+        <p>Email ini dikirim otomatis oleh MentorIn. Jangan membalas email ini.</p>
       </div>
     </div>
   `

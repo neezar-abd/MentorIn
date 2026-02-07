@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tutor Sebaya - Platform Bimbingan Belajar Peer-to-Peer",
+  title: "MentorIn - Platform Bimbingan Belajar Peer-to-Peer",
   description: "Platform bimbingan belajar peer-to-peer yang menghubungkan siswa pintar dengan siswa yang membutuhkan bantuan.",
 };
 

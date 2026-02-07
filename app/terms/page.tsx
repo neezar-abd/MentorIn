@@ -5,7 +5,7 @@ const sections = [
     {
         title: '1. Ketentuan Umum',
         content:
-            'Dengan mendaftar dan menggunakan Tutor Sebaya, kamu menyetujui syarat dan ketentuan yang berlaku. Platform ini ditujukan untuk siswa sekolah yang ingin belajar bersama secara peer-to-peer.',
+            'Dengan mendaftar dan menggunakan MentorIn, kamu menyetujui syarat dan ketentuan yang berlaku. Platform ini ditujukan untuk siswa sekolah yang ingin belajar bersama secara peer-to-peer.',
     },
     {
         title: '2. Akun Pengguna',
@@ -35,12 +35,12 @@ const sections = [
     {
         title: '7. Hak Kekayaan Intelektual',
         content:
-            'Semua konten, desain, dan kode di platform Tutor Sebaya adalah milik tim pengembang. Pengguna tidak diperkenankan menyalin atau mendistribusikan materi platform tanpa izin.',
+            'Semua konten, desain, dan kode di platform MentorIn adalah milik tim pengembang. Pengguna tidak diperkenankan menyalin atau mendistribusikan materi platform tanpa izin.',
     },
     {
         title: '8. Batasan Tanggung Jawab',
         content:
-            'Tutor Sebaya menyediakan platform sebagai fasilitator. Kami tidak bertanggung jawab atas kualitas bimbingan yang diberikan oleh tutor individual maupun hasil belajar siswa.',
+            'MentorIn menyediakan platform sebagai fasilitator. Kami tidak bertanggung jawab atas kualitas bimbingan yang diberikan oleh tutor individual maupun hasil belajar siswa.',
     },
     {
         title: '9. Perubahan Ketentuan',
@@ -63,7 +63,7 @@ export default function TermsPage() {
 
                         <div className="rounded-(--radius) border p-6 md:p-8">
                             <p className="text-muted-foreground leading-relaxed">
-                                Harap baca syarat dan ketentuan berikut dengan seksama sebelum menggunakan platform Tutor Sebaya. Dengan menggunakan layanan kami, kamu dianggap telah memahami dan menyetujui semua ketentuan di bawah ini.
+                                Harap baca syarat dan ketentuan berikut dengan seksama sebelum menggunakan platform MentorIn. Dengan menggunakan layanan kami, kamu dianggap telah memahami dan menyetujui semua ketentuan di bawah ini.
                             </p>
                         </div>
 

@@ -32,7 +32,7 @@ export function generateReportPDF(data: ReportData) {
     // Header
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
-    doc.text('Laporan Aktivitas - Tutor Sebaya', pageWidth / 2, y, { align: 'center' })
+    doc.text('Laporan Aktivitas - MentorIn', pageWidth / 2, y, { align: 'center' })
     y += 12
 
     doc.setFontSize(10)
@@ -124,7 +124,7 @@ export function generateReportPDF(data: ReportData) {
     y += 6
     doc.setFontSize(8)
     doc.setTextColor(150)
-    doc.text('Dokumen ini dibuat secara otomatis oleh platform Tutor Sebaya.', pageWidth / 2, y, { align: 'center' })
+    doc.text('Dokumen ini dibuat secara otomatis oleh platform MentorIn.', pageWidth / 2, y, { align: 'center' })
 
     return doc
 }
@@ -160,7 +160,7 @@ export function generateCertificatePDF(data: CertificateData) {
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.setTextColor(100)
-    doc.text('TUTOR SEBAYA', pageWidth / 2, y, { align: 'center' })
+    doc.text('MENTORIN', pageWidth / 2, y, { align: 'center' })
     y += 16
 
     doc.setFontSize(28)
@@ -231,7 +231,7 @@ export function generateCertificatePDF(data: CertificateData) {
     y += 10
     doc.setFontSize(10)
     doc.setTextColor(100)
-    doc.text('Tutor Sebaya Platform', pageWidth / 2, y, { align: 'center' })
+    doc.text('MentorIn Platform', pageWidth / 2, y, { align: 'center' })
     y += 5
     doc.setFontSize(8)
     doc.text(`Diterbitkan: ${fmtDate(data.completedAt)}`, pageWidth / 2, y, { align: 'center' })

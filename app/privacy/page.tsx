@@ -53,7 +53,7 @@ export default function PrivacyPage() {
 
                         <div className="rounded-(--radius) border p-6 md:p-8">
                             <p className="text-muted-foreground leading-relaxed">
-                                Kebijakan privasi ini menjelaskan bagaimana Tutor Sebaya mengumpulkan, menggunakan, dan melindungi informasi pribadi kamu saat menggunakan platform kami.
+                                Kebijakan privasi ini menjelaskan bagaimana MentorIn mengumpulkan, menggunakan, dan melindungi informasi pribadi kamu saat menggunakan platform kami.
                             </p>
                         </div>
 

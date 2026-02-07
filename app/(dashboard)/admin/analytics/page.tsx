@@ -33,7 +33,7 @@ export default async function AdminAnalyticsPage() {
                     <h1 className="text-balance font-serif text-3xl font-medium">Analytics</h1>
                     <Badge variant="outline">Admin</Badge>
                 </div>
-                <p className="text-muted-foreground mt-2">Dashboard analitik platform Tutor Sebaya.</p>
+                <p className="text-muted-foreground mt-2">Dashboard analitik platform MentorIn.</p>
             </div>
 
             {/* Overview Stats */}

@@ -1,4 +1,4 @@
-# Tutor Sebaya - Peer Tutoring Platform
+# MentorIn - Peer Tutoring Platform
 
 Platform bimbingan belajar peer-to-peer untuk siswa sekolah. Sistem ini memfasilitasi siswa yang mahir dalam mata pelajaran tertentu untuk membantu teman sebayanya yang membutuhkan bantuan.
 

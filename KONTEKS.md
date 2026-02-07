@@ -1,7 +1,7 @@
-# KONTEKS PROJECT - TUTOR SEBAYA
+# KONTEKS PROJECT - MENTORIN
 
 ## 📌 OVERVIEW
-**Nama Project:** Tutor Sebaya  
+**Nama Project:** MentorIn  
 **Deskripsi:** Platform bimbingan belajar peer-to-peer untuk siswa sekolah  
 **Problem:** Siswa yang lemah di mata pelajaran tertentu malu bertanya ke guru, padahal teman sebayanya yang pintar bisa membantu  
 **Solution:** Sistem yang memfasilitasi siswa pintar menjadi tutor untuk membantu teman-temannya  
@@ -566,7 +566,7 @@ export const config = {
 **Copy paste ini ke chat baru:**
 
 ```
-Saya sedang develop aplikasi "Tutor Sebaya" - platform bimbingan belajar peer-to-peer untuk siswa sekolah.
+Saya sedang develop aplikasi "MentorIn" - platform bimbingan belajar peer-to-peer untuk siswa sekolah.
 
 Tech Stack: Next.js 16, TypeScript, Tailwind CSS, Prisma, PostgreSQL, NextAuth.js v5
 
