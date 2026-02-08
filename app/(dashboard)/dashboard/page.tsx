@@ -49,15 +49,15 @@ export default async function DashboardPage() {
     ]
 
     return (
-        <div className="space-y-12">
+        <div className="space-y-6 sm:space-y-8 md:space-y-12">
             {/* Header */}
             <div>
-                <h1 className="text-balance font-serif text-3xl font-medium">Dashboard</h1>
-                <p className="text-muted-foreground mt-2">Selamat datang kembali, {session.user.name?.split(' ')[0]}.</p>
+                <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium">Dashboard</h1>
+                <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">Selamat datang kembali, {session.user.name?.split(' ')[0]}.</p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
                 {statCards.map((stat) => (
                     <StatCard
                         key={stat.title}
@@ -69,63 +69,64 @@ export default async function DashboardPage() {
             </div>
 
             {/* Upcoming Sessions */}
-            <section className="space-y-4">
+            <section className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                    <h2 className="font-medium">Sesi Mendatang</h2>
+                    <h2 className="font-medium text-sm sm:text-base">Sesi Mendatang</h2>
                     <Button
                         asChild
                         variant="ghost"
                         size="sm">
                         <Link href="/sessions">
-                            Lihat Semua
+                            <span className="hidden sm:inline">Lihat Semua</span>
+                            <span className="sm:hidden text-xs">Semua</span>
                             <ChevronRight className="ml-1 size-4 opacity-50" />
                         </Link>
                     </Button>
                 </div>
 
                 {upcomingSessions.length > 0 ? (
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
                         {upcomingSessions.map((s: SessionItem) => (
                             <Link
                                 key={s.id}
                                 href={`/sessions/${s.id}`}
-                                className="rounded-(--radius) border p-5 duration-200 hover:shadow-md hover:shadow-zinc-950/5">
+                                className="rounded-(--radius) border p-3 sm:p-4 md:p-5 duration-200 hover:shadow-md hover:shadow-zinc-950/5">
                                 <div className="flex items-start justify-between">
-                                    <div className="space-y-1">
+                                    <div className="space-y-0.5 sm:space-y-1">
                                         <div className="flex items-center gap-2">
-                                            <h3 className="font-medium">{s.subject}</h3>
-                                            <Badge variant="outline">{s.mode === 'ONLINE' ? 'Online' : 'Offline'}</Badge>
+                                            <h3 className="font-medium text-sm sm:text-base">{s.subject}</h3>
+                                            <Badge variant="outline" className="text-xs">{s.mode === 'ONLINE' ? 'Online' : 'Offline'}</Badge>
                                         </div>
-                                        <p className="text-muted-foreground text-sm">{s.topic}</p>
+                                        <p className="text-muted-foreground text-xs sm:text-sm">{s.topic}</p>
                                     </div>
                                 </div>
-                                <div className="text-muted-foreground mt-4 flex items-center gap-4 text-sm">
+                                <div className="text-muted-foreground mt-3 sm:mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm">
                                     <div className="flex items-center gap-1.5">
-                                        <Users className="size-3.5" />
-                                        <span>{s.tutor.user.name}</span>
+                                        <Users className="size-3 sm:size-3.5" />
+                                        <span className="line-clamp-1">{s.tutor.user.name}</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <Calendar className="size-3.5" />
+                                        <Calendar className="size-3 sm:size-3.5" />
                                         <span>{formatDate(s.scheduledAt)}</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <Clock className="size-3.5" />
+                                        <Clock className="size-3 sm:size-3.5" />
                                         <span>{formatTime(s.scheduledAt)}</span>
                                     </div>
                                 </div>
                                 {s.location && (
-                                    <div className="text-muted-foreground mt-2 flex items-center gap-1.5 text-sm"><MapPin className="size-3.5" /><span>{s.location}</span></div>
+                                    <div className="text-muted-foreground mt-2 flex items-center gap-1.5 text-xs sm:text-sm line-clamp-1"><MapPin className="size-3 sm:size-3.5" /><span>{s.location}</span></div>
                                 )}
                             </Link>
                         ))}
                     </div>
                 ) : (
-                    <div className="rounded-(--radius) border py-12 text-center">
-                        <GraduationCap className="text-muted-foreground mx-auto size-8" />
-                        <p className="text-muted-foreground mt-3 text-sm">Belum ada sesi mendatang</p>
+                    <div className="rounded-(--radius) border py-8 sm:py-10 md:py-12 text-center">
+                        <GraduationCap className="text-muted-foreground mx-auto size-6 sm:size-8" />
+                        <p className="text-muted-foreground mt-2 sm:mt-3 text-xs sm:text-sm">Belum ada sesi mendatang</p>
                         <Button
                             asChild
-                            className="mt-4 pr-1.5"
+                            className="mt-3 sm:mt-4 pr-1.5"
                             size="sm">
                             <Link href="/tutors">
                                 Cari Tutor
@@ -137,15 +138,16 @@ export default async function DashboardPage() {
             </section>
 
             {/* Recent Requests */}
-            <section className="space-y-4">
+            <section className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                    <h2 className="font-medium">Request Terbaru</h2>
+                    <h2 className="font-medium text-sm sm:text-base">Request Terbaru</h2>
                     <Button
                         asChild
                         variant="ghost"
                         size="sm">
                         <Link href="/requests">
-                            Lihat Semua
+                            <span className="hidden sm:inline">Lihat Semua</span>
+                            <span className="sm:hidden text-xs">Semua</span>
                             <ChevronRight className="ml-1 size-4 opacity-50" />
                         </Link>
                     </Button>
@@ -153,14 +155,14 @@ export default async function DashboardPage() {
 
                 <div className="rounded-(--radius) border">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
+                        <table className="w-full text-xs sm:text-sm">
                             <thead>
                                 <tr className="border-b">
-                                    <th className="px-4 py-3 text-left font-medium">Mata Pelajaran</th>
-                                    <th className="px-4 py-3 text-left font-medium">Topik</th>
-                                    <th className="hidden px-4 py-3 text-left font-medium md:table-cell">Tutor</th>
-                                    <th className="hidden px-4 py-3 text-left font-medium md:table-cell">Jadwal</th>
-                                    <th className="px-4 py-3 text-left font-medium">Status</th>
+                                    <th className="px-3 sm:px-4 py-2 sm:py-3 text-left font-medium">Mata Pelajaran</th>
+                                    <th className="px-3 sm:px-4 py-2 sm:py-3 text-left font-medium">Topik</th>
+                                    <th className="hidden px-3 sm:px-4 py-2 sm:py-3 text-left font-medium md:table-cell">Tutor</th>
+                                    <th className="hidden px-3 sm:px-4 py-2 sm:py-3 text-left font-medium md:table-cell">Jadwal</th>
+                                    <th className="px-3 sm:px-4 py-2 sm:py-3 text-left font-medium">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -168,21 +170,21 @@ export default async function DashboardPage() {
                                     <tr
                                         key={request.id}
                                         className="border-b last:border-0">
-                                        <td className="px-4 py-3">
-                                            <div className="flex items-center gap-2">
-                                                <span className="font-medium">{request.subject}</span>
-                                                <Badge variant="outline" className="text-[10px]">
+                                        <td className="px-3 sm:px-4 py-2 sm:py-3">
+                                            <div className="flex items-center gap-1.5 sm:gap-2">
+                                                <span className="font-medium line-clamp-1">{request.subject}</span>
+                                                <Badge variant="outline" className="text-[10px] shrink-0">
                                                     {request.mode === 'ONLINE' ? 'Online' : 'Offline'}
                                                 </Badge>
                                             </div>
                                         </td>
-                                        <td className="text-muted-foreground px-4 py-3">{request.topic}</td>
-                                        <td className="text-muted-foreground hidden px-4 py-3 md:table-cell">{request.tutor.user.name}</td>
-                                        <td className="text-muted-foreground hidden px-4 py-3 md:table-cell">
+                                        <td className="text-muted-foreground px-3 sm:px-4 py-2 sm:py-3 line-clamp-1">{request.topic}</td>
+                                        <td className="text-muted-foreground hidden px-3 sm:px-4 py-2 sm:py-3 md:table-cell">{request.tutor.user.name}</td>
+                                        <td className="text-muted-foreground hidden px-3 sm:px-4 py-2 sm:py-3 md:table-cell">
                                             {formatDate(request.scheduledAt)} · {formatTime(request.scheduledAt)}
                                         </td>
-                                        <td className="px-4 py-3">
-                                            <span className={`inline-flex rounded-full border px-2.5 py-0.5 text-xs font-medium ${statusColors[request.status]}`}>
+                                        <td className="px-3 sm:px-4 py-2 sm:py-3">
+                                            <span className={`inline-flex rounded-full border px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium ${statusColors[request.status]}`}>
                                                 {statusLabels[request.status]}
                                             </span>
                                         </td>
@@ -195,29 +197,29 @@ export default async function DashboardPage() {
             </section>
 
             {/* Quick Actions */}
-            <section className="space-y-4">
-                <h2 className="font-medium">Aksi Cepat</h2>
-                <div className="grid gap-4 sm:grid-cols-3">
+            <section className="space-y-3 sm:space-y-4">
+                <h2 className="font-medium text-sm sm:text-base">Aksi Cepat</h2>
+                <div className="grid gap-3 sm:gap-4 sm:grid-cols-3">
                     <Link
                         href="/tutors"
-                        className="rounded-(--radius) border p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
-                        <Users className="mx-auto size-6" />
-                        <h3 className="mt-3 font-medium">Cari Tutor</h3>
-                        <p className="text-muted-foreground mt-1 text-sm">Temukan tutor yang cocok</p>
+                        className="rounded-(--radius) border p-4 sm:p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
+                        <Users className="mx-auto size-5 sm:size-6" />
+                        <h3 className="mt-2 sm:mt-3 font-medium text-sm sm:text-base">Cari Tutor</h3>
+                        <p className="text-muted-foreground mt-0.5 sm:mt-1 text-xs sm:text-sm">Temukan tutor yang cocok</p>
                     </Link>
                     <Link
                         href="/requests/new"
-                        className="rounded-(--radius) border p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
-                        <BookOpen className="mx-auto size-6" />
-                        <h3 className="mt-3 font-medium">Buat Request</h3>
-                        <p className="text-muted-foreground mt-1 text-sm">Ajukan bimbingan belajar</p>
+                        className="rounded-(--radius) border p-4 sm:p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
+                        <BookOpen className="mx-auto size-5 sm:size-6" />
+                        <h3 className="mt-2 sm:mt-3 font-medium text-sm sm:text-base">Buat Request</h3>
+                        <p className="text-muted-foreground mt-0.5 sm:mt-1 text-xs sm:text-sm">Ajukan bimbingan belajar</p>
                     </Link>
                     <Link
                         href="/tutor/register"
-                        className="rounded-(--radius) border p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
-                        <GraduationCap className="mx-auto size-6" />
-                        <h3 className="mt-3 font-medium">Jadi Tutor</h3>
-                        <p className="text-muted-foreground mt-1 text-sm">Bantu teman belajar</p>
+                        className="rounded-(--radius) border p-4 sm:p-5 text-center duration-200 hover:shadow-md hover:shadow-zinc-950/5">
+                        <GraduationCap className="mx-auto size-5 sm:size-6" />
+                        <h3 className="mt-2 sm:mt-3 font-medium text-sm sm:text-base">Jadi Tutor</h3>
+                        <p className="text-muted-foreground mt-0.5 sm:mt-1 text-xs sm:text-sm">Bantu teman belajar</p>
                     </Link>
                 </div>
             </section>
