@@ -28,7 +28,8 @@ function formatTime(date: Date | string) {
 export default async function SessionsPage() {
     const { requests: allRequests } = await getMyRequests({ perPage: 100 })
     // Sessions = approved (upcoming) + completed
-    const upcomingSessions = allRequests.filter((r: SessionItem) => r.status === 'APPROVED')
+    const now = new Date()
+    const upcomingSessions = allRequests.filter((r: SessionItem) => r.status === 'APPROVED' && new Date(r.scheduledAt) > now)
     const completedSessions = allRequests.filter((r: SessionItem) => r.status === 'COMPLETED')
 
     return (

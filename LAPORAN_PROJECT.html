@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Project MentorIn</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2cm;
+            color: #000;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: bold;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 { font-size: 24pt; text-align: center; text-transform: uppercase; margin-bottom: 1em; }
+        h2 { font-size: 18pt; border-bottom: 1px solid #000; padding-bottom: 5px; }
+        h3 { font-size: 14pt; }
+        
+        p { margin-bottom: 1em; text-align: justify; }
+        
+        ul, ol { margin-bottom: 1em; padding-left: 2em; }
+        li { margin-bottom: 0.5em; }
+
+        .cover-page {
+            text-align: center;
+            margin-top: 5cm;
+            page-break-after: always;
+        }
+        
+        .cover-title { font-size: 28pt; font-weight: bold; margin-bottom: 2cm; }
+        .cover-details { margin-top: 3cm; font-size: 14pt; }
+        
+        .toc { page-break-after: always; }
+        .toc a { text-decoration: none; color: black; display: block; margin-bottom: 0.5em; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+
+        code { font-family: monospace; background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; border: 1px solid #ddd; }
+
+        .footer { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            text-align: center; 
+            font-size: 10pt; 
+            color: #666; 
+        }
+
+        @media print {
+            body { padding: 0; margin: 2.5cm; }
+            .no-print { display: none; }
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print" style="background: #eef; padding: 20px; text-align: center; border-bottom: 1px solid #ccc; position: sticky; top: 0;">
+        <strong>Cara Simpan ke PDF:</strong> Tekan Ctrl+P (Windows) atau Cmd+P (Mac), lalu pilih "Save as PDF".
+    </div>
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        <div class="cover-title">LAPORAN PROJECT<br>APLIKASI WEB MENTORIN</div>
+        
+        <div class="cover-details">
+            <p><strong>Disusun Oleh:</strong></p>
+            <p>Neezar Abdurrahman Ahnaf Abiyyi</p>
+            
+            <br><br>
+            
+            <p><strong>Jurusan Rekayasa Perangkat Lunak</strong><br>
+            <strong>SMK Negeri 1 Probolinggo</strong><br>
+            <strong>2026</strong></p>
+        </div>
+    </div>
+
+    <!-- KATA PENGANTAR -->
+    <h2>KATA PENGANTAR</h2>
+    <p>Puji syukur kehadirat Tuhan Yang Maha Esa. Laporan ini disusun sebagai dokumentasi pengembangan aplikasi <strong>MentorIn</strong>, sebuah platform <em>peer tutoring</em> yang dirancang untuk mengatasi kesenjangan kualitas pendidikan melalui kolaborasi antar siswa. Aplikasi ini dibangun dengan teknologi modern seperti Next.js 16 dan Supabase untuk memastikan performa yang cepat dan skalabel.</p>
+    <p align="right">Penulis, 2026</p>
+
+    <!-- DAFTAR ISI -->
+    <div class="toc">
+        <h2>DAFTAR ISI</h2>
+        <a href="#bab1">BAB I - PENDAHULUAN</a>
+        <a href="#bab2">BAB II - LANDASAN TEORI & TEKNOLOGI</a>
+        <a href="#bab3">BAB III - PERANCANGAN SISTEM</a>
+        <a href="#bab4">BAB IV - IMPLEMENTASI & FITUR</a>
+        <a href="#bab5">BAB V - PENUTUP</a>
+    </div>
+
+    <!-- BAB I -->
+    <h1 id="bab1">BAB I - PENDAHULUAN</h1>
+
+    <h3>1.1 Latar Belakang Masalah</h3>
+    <p>Kualitas pendidikan di Indonesia masih menghadapi tantangan serius. Berdasarkan data <strong>PISA 2022</strong>, skor literasi matematika siswa Indonesia turun drastis dari 379 (2018) menjadi <strong>366</strong>, menempatkan Indonesia di peringkat 69 dari 81 negara. Lebih mengkhawatirkan, hanya 18% siswa yang mencapai kompetensi minimum level 2, jauh di bawah rata-rata OECD sebesar 69% [1].</p>
+    
+    <p>Salah satu solusi efektif untuk mengatasi masalah ini adalah metode <strong>Peer Tutoring</strong> (Tutor Sebaya). Studi di SMAN 8 Mandau menunjukkan bahwa metode ini mampu meningkatkan hasil belajar siswa hingga <strong>50,8%</strong> (dari rata-rata 49,17 menjadi 74,17) [2]. Selain itu, riset pada pendidikan vokasi membuktikan bahwa metode ini lebih efektif (skor 96,90) dibandingkan pembelajaran konvensional (94,29) [3].</p>
+    
+    <p>Namun, pelaksanaan <em>peer tutoring</em> di sekolah seringkali terkendala:</p>
+    <ol>
+        <li><strong>Kesulitan Mencari Tutor:</strong> Tidak ada database terpusat siapa siswa yang ahli di mapel tertentu.</li>
+        <li><strong>Jadwal Bentrok:</strong> Koordinasi waktu dilakukan manual dan sering <em>missed</em>.</li>
+        <li><strong>Tidak Terukur:</strong> Tidak ada tracking progress atau evaluasi kualitas tutor.</li>
+    </ol>
+
+    <h3>1.2 Solusi: MentorIn</h3>
+    <p><strong>MentorIn</strong> hadir sebagai platform web yang menghubungkan siswa yang butuh bimbingan dengan teman sebaya yang berprestasi dalam kepandaiannya. Sistem ini mendigitalkan proses pencarian, penjadwalan, hingga evaluasi tutor dalam satu ekosistem yang terintegrasi.</p>
+
+    <h3>1.3 Tujuan Project</h3>
+    <ol>
+        <li>Menyediakan wadah kolaborasi akademik antar siswa yang mudah diakses.</li>
+        <li>Meningkatkan rata-rata nilai akademik sekolah melalui bimbingan intensif personal.</li>
+        <li>Melatih <em>soft skill</em> (komunikasi & leadership) bagi siswa tutor.</li>
+    </ol>
+
+    <!-- BAB II -->
+    <h1 id="bab2">BAB II - LANDASAN TEORI & TEKNOLOGI</h1>
+    <p>Aplikasi ini dibangun menggunakan arsitektur <em>Modern Full-Stack Typescript</em>.</p>
+
+    <h3>2.1 Core Framework</h3>
+    <ul>
+        <li><strong>Next.js 16 (App Router):</strong> Framework React terbaru untuk performa tinggi melalui <em>Server Components</em> dan SEO optimal.</li>
+        <li><strong>TypeScript:</strong> Superset JavaScript untuk menjamin keamanan tipe data (<em>type safety</em>) dan mengurangi bug saat runtime.</li>
+    </ul>
+
+    <h3>2.2 Database & Backend</h3>
+    <ul>
+        <li><strong>PostgreSQL (via Supabase):</strong> Relational database yang handal untuk data kompleks.</li>
+        <li><strong>Prisma ORM:</strong> Penghubung aplikasi dengan database yang aman, <em>type-safe</em>, dan mudah dimaintain.</li>
+        <li><strong>NextAuth.js v5:</strong> Sistem autentikasi aman (mendukung OAuth & Credentials).</li>
+    </ul>
+
+    <h3>2.3 UI/UX</h3>
+    <ul>
+        <li><strong>Tailwind CSS v4:</strong> Utility-first CSS framework untuk styling cepat dan responsif.</li>
+        <li><strong>Shadcn/UI:</strong> Koleksi komponen UI yang <em>reusable</em> dan aksesibel.</li>
+    </ul>
+
+    <h3>2.4 Fitur Real-time</h3>
+    <ul>
+        <li><strong>Pusher:</strong> Menangani notifikasi real-time (contoh: notifikasi request bimbingan masuk).</li>
+        <li><strong>Resend:</strong> Layanan pengiriman email transaksional untuk verifikasi dan notifikasi.</li>
+    </ul>
+
+    <!-- BAB III -->
+    <h1 id="bab3">BAB III - PERANCANGAN SISTEM</h1>
+
+    <h3>3.1 Alur Kerja Sistem</h3>
+    <p>Sistem dirancang sesederhana mungkin untuk memudahkan pengguna:</p>
+    <ul>
+        <li>Siswa Login &rarr; Cari Tutor &rarr; Filter Mapel &rarr; Pilih Tutor</li>
+        <li>Request Sesi &rarr; Tutor Approve?</li>
+        <li>Jika Ya &rarr; Jadwal Terkonfirmasi &rarr; Pelaksanaan Bimbingan &rarr; Review & Rating</li>
+        <li>Jika Tidak &rarr; Cari Tutor Lain</li>
+    </ul>
+
+    <h3>3.2 Diagram Database (ERD Sederhana)</h3>
+    <ul>
+        <li><strong>User:</strong> Menyimpan data login, role (Student/Tutor), dan profil.</li>
+        <li><strong>TutorProfile:</strong> Detail keahlian, jadwal, dan rating tutor.</li>
+        <li><strong>Request:</strong> Data permintaan bimbingan (status: Pending, Approved, Done).</li>
+        <li><strong>Review:</strong> Ulasan dan rating setelah sesi selesai.</li>
+    </ul>
+
+    <!-- BAB IV -->
+    <h1 id="bab4">BAB IV - IMPLEMENTASI & FITUR</h1>
+
+    <h3>4.1 Fitur Unggulan</h3>
+    <ol>
+        <li><strong>Smart Matching:</strong> Pencarian tutor berdasarkan mata pelajaran, rating, dan ketersediaan waktu.</li>
+        <li><strong>Real-time Booking:</strong> Request jadwal bimbingan langsung dengan status update instan.</li>
+        <li><strong>Tutor Verification:</strong> Sistem verifikasi manual oleh admin untuk menjamin kualitas tutor.</li>
+        <li><strong>Analytics Dashboard:</strong> Grafik perkembangan jumlah sesi dan pengguna untuk admin.</li>
+    </ol>
+
+    <h3>4.2 Tampilan Aplikasi</h3>
+    <p><em>(Bagian ini ditiadakan sesuai instruksi)</em></p>
+
+    <!-- BAB V -->
+    <h1 id="bab5">BAB V - PENUTUP</h1>
+
+    <h3>5.1 Kesimpulan</h3>
+    <p>MentorIn berhasil dikembangkan sebagai solusi digital untuk masalah kesenjangan akademik di sekolah. Dengan fitur pencarian tutor dan penjadwalan terintegrasi, aplikasi ini mempermudah implementasi metode <em>Peer Tutoring</em> yang terbukti efektif meningkatkan nilai siswa. Penggunaan teknologi Next.js 16 menjamin aplikasi berjalan cepat, responsif, dan siap digunakan dalam skala besar.</p>
+
+    <h3>5.2 Saran Pengembangan</h3>
+    <p>Untuk pengembangan selanjutnya, disarankan menambahkan fitur <strong>Video Call in-app</strong> menggunakan <strong>WebRTC</strong> agar bimbingan online bisa dilakukan langsung di dalam platform tanpa aplikasi pihak ketiga.</p>
+    
+    <br><hr><br>
+
+    <h3>DAFTAR PUSTAKA</h3>
+    <p>[1] OECD. (2023). <em>PISA 2022 Results: The State of Learning and Equity in Education</em>. Paris: OECD Publishing.<br>
+    [2] Jurnal Pendidikan. (2024). <em>Efektivitas Tutor Sebaya terhadap Hasil Belajar Geografi Siswa SMAN 8 Mandau</em>.<br>
+    [3] ResearchGate. (2023). <em>Pengaruh Peer Tutoring pada Pembelajaran Vokasi</em>.</p>
+
+</body>
+</html>

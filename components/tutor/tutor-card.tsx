@@ -34,24 +34,24 @@ export default function TutorCard({ tutor, className }: TutorCardProps) {
     }
 
     return (
-        <div className={cn('group rounded-(--radius) border p-6 duration-200 hover:shadow-md hover:shadow-zinc-950/5', className)}>
+        <div className={cn('group rounded-(--radius) border p-4 sm:p-5 md:p-6 duration-200 hover:shadow-md hover:shadow-zinc-950/5', className)}>
             {/* Header */}
-            <div className="flex items-start gap-4">
-                <Avatar className="size-12">
+            <div className="flex items-start gap-3 sm:gap-4">
+                <Avatar className="size-10 sm:size-12 shrink-0">
                     <AvatarImage src={tutor.user.avatarUrl || undefined} />
-                    <AvatarFallback className="text-sm">{getInitials(tutor.user.name)}</AvatarFallback>
+                    <AvatarFallback className="text-xs sm:text-sm">{getInitials(tutor.user.name)}</AvatarFallback>
                 </Avatar>
-                <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                        <h3 className="truncate font-medium">{tutor.user.name}</h3>
-                        {tutor.isVerified && <CheckCircle2 className="text-foreground size-4 shrink-0" />}
+                <div className="min-w-0 flex-1 overflow-hidden">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                        <h3 className="truncate font-medium text-sm sm:text-base">{tutor.user.name}</h3>
+                        {tutor.isVerified && <CheckCircle2 className="text-foreground size-3.5 sm:size-4 shrink-0" />}
                     </div>
-                    {tutor.user.class && <p className="text-muted-foreground text-sm">Kelas {tutor.user.class}</p>}
+                    {tutor.user.class && <p className="text-muted-foreground text-xs sm:text-sm truncate">Kelas {tutor.user.class}</p>}
                 </div>
             </div>
 
             {/* Stats */}
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-3 sm:mt-4 flex items-center gap-3 sm:gap-4">
                 <RatingStars
                     rating={tutor.rating}
                     size="sm"
@@ -64,22 +64,23 @@ export default function TutorCard({ tutor, className }: TutorCardProps) {
             </div>
 
             {/* Subjects */}
-            <div className="mt-4 flex flex-wrap gap-1.5">
+            <div className="mt-3 sm:mt-4 flex flex-wrap gap-1 sm:gap-1.5">
                 {tutor.subjects.slice(0, 3).map((subject: string) => (
                     <Badge
                         key={subject}
-                        variant="outline">
+                        variant="outline"
+                        className="text-xs">
                         {subject}
                     </Badge>
                 ))}
-                {tutor.subjects.length > 3 && <Badge variant="outline">+{tutor.subjects.length - 3}</Badge>}
+                {tutor.subjects.length > 3 && <Badge variant="outline" className="text-xs">+{tutor.subjects.length - 3}</Badge>}
             </div>
 
             {/* Bio */}
-            {tutor.bio && <p className="text-muted-foreground mt-4 line-clamp-2 text-sm">{tutor.bio}</p>}
+            {tutor.bio && <p className="text-muted-foreground mt-3 sm:mt-4 line-clamp-2 text-xs sm:text-sm break-words">{tutor.bio}</p>}
 
             {/* Action */}
-            <div className="mt-6">
+            <div className="mt-4 sm:mt-6">
                 <Button
                     asChild
                     className="w-full pr-1.5"

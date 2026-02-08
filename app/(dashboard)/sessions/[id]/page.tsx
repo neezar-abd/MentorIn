@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getRequestById } from '@/lib/actions/request'
 import { auth } from '@/lib/auth'
+import { CompleteButton } from '@/components/tutor/action-buttons'
 
 function formatDate(date: Date | string) {
     return new Date(date).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
@@ -25,6 +26,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
 
     const isCompleted = session.status === 'COMPLETED'
     const isStudent = session.studentId === authSession.user.id
+    const isTutor = session.tutor.userId === authSession.user.id
+    const isPastSession = new Date(session.scheduledAt) <= new Date()
     const tutorName = session.tutor.user.name
     const tutorInitials = tutorName
         .split(' ')
@@ -53,19 +56,23 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                             <h2 className="text-xl font-medium">{session.subject}</h2>
                             <Badge variant="outline">{session.mode === 'ONLINE' ? 'Online' : 'Offline'}</Badge>
                             <span
-                                className={`inline-flex rounded-full border px-2.5 py-0.5 text-xs font-medium ${
-                                    isCompleted
-                                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-400'
-                                        : 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-400'
-                                }`}>
+                                className={`inline-flex rounded-full border px-2.5 py-0.5 text-xs font-medium ${isCompleted
+                                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-400'
+                                    : 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-400'
+                                    }`}>
                                 {isCompleted ? 'Selesai' : 'Akan Datang'}
                             </span>
                         </div>
                         <p className="text-muted-foreground mt-1">{session.topic}</p>
                     </div>
-                    {isCompleted && (
-                        <ExportCertificateButton sessionId={session.id} />
-                    )}
+                    <div className="flex items-center gap-2">
+                        {isCompleted && (
+                            <ExportCertificateButton sessionId={session.id} />
+                        )}
+                        {!isCompleted && isTutor && session.status === 'APPROVED' && isPastSession && (
+                            <CompleteButton requestId={session.id} />
+                        )}
+                    </div>
                 </div>
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">

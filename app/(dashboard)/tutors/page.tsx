@@ -18,17 +18,17 @@ export default async function TutorsPage({ searchParams }: { searchParams: Promi
     const { tutors, total, totalPages } = await getVerifiedTutors({ subject: selectedSubject, search, page })
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
             {/* Header */}
             <div>
-                <h1 className="text-balance font-serif text-3xl font-medium">Cari Tutor</h1>
-                <p className="text-muted-foreground mt-2">Temukan mentor terbaik yang cocok untuk kamu.</p>
+                <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium">Cari Tutor</h1>
+                <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">Temukan mentor terbaik yang cocok untuk kamu.</p>
             </div>
 
             {/* Search + Subject Filter */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
                 <SearchInput placeholder="Cari tutor berdasarkan nama, bio, atau mata pelajaran..." />
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {subjects.map((subject) => (
                         <Button
                             key={subject}
@@ -46,13 +46,13 @@ export default async function TutorsPage({ searchParams }: { searchParams: Promi
 
             {/* Results */}
             <div>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm">
                     {total} tutor ditemukan
                     {search && <span> untuk &ldquo;{search}&rdquo;</span>}
                 </p>
 
                 {tutors.length > 0 ? (
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {tutors.map((tutor: TutorListItem) => (
                             <TutorCard key={tutor.id} tutor={tutor} />
                         ))}
