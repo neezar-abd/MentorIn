@@ -49,9 +49,10 @@ export type TutorListItem = {
     id: string
     userId: string
     subjects: string[]
-    bio: string
+    bio: string | null
     rating: number
     totalSessions: number
+    isVerified: boolean
     user: {
         id: string
         name: string

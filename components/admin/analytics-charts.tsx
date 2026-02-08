@@ -117,7 +117,7 @@ export function UsersPerRoleChart({
                         label={(props: PieLabelRenderProps) => `${(props as PieLabelRenderProps & { role: string }).role}: ${(props as PieLabelRenderProps & { count: number }).count}`}
                         labelLine={false}
                         fontSize={11}>
-                        {data.map((_, i) => (
+                        {data.map((_: { role: string; count: number }, i: number) => (
                             <Cell key={i} fill={COLORS[i % COLORS.length]} />
                         ))}
                     </Pie>
@@ -166,7 +166,7 @@ export function RequestStatusChart({
                         label={(props: PieLabelRenderProps) => `${(props as PieLabelRenderProps & { status: string }).status}: ${(props as PieLabelRenderProps & { count: number }).count}`}
                         labelLine={false}
                         fontSize={11}>
-                        {data.map((entry, i) => (
+                        {data.map((entry: { status: string; count: number }, i: number) => (
                             <Cell key={i} fill={statusColors[entry.status] || COLORS[i % COLORS.length]} />
                         ))}
                     </Pie>

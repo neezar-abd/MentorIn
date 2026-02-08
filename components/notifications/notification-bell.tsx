@@ -89,7 +89,7 @@ export default function NotificationBell() {
         if (!notif.isRead) {
             startTransition(async () => {
                 await markAsRead(notif.id)
-                setNotifications((prev) => prev.map((n) => (n.id === notif.id ? { ...n, isRead: true } : n)))
+                setNotifications((prev) => prev.map((n: Notification) => (n.id === notif.id ? { ...n, isRead: true } : n)))
                 setUnreadCount((prev) => Math.max(0, prev - 1))
             })
         }
@@ -102,7 +102,7 @@ export default function NotificationBell() {
     const handleMarkAllRead = () => {
         startTransition(async () => {
             await markAllAsRead()
-            setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })))
+            setNotifications((prev) => prev.map((n: Notification) => ({ ...n, isRead: true })))
             setUnreadCount(0)
         })
     }
@@ -135,7 +135,7 @@ export default function NotificationBell() {
                 <DropdownMenuSeparator />
                 <div className="max-h-80 overflow-y-auto">
                     {notifications.length > 0 ? (
-                        notifications.map((notif) => (
+                        notifications.map((notif: Notification) => (
                             <DropdownMenuItem
                                 key={notif.id}
                                 onClick={() => handleClick(notif)}

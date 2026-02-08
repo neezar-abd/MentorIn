@@ -6,6 +6,7 @@ import CancelButton from '@/components/request/cancel-button'
 import { Calendar, ChevronRight, Clock, FileText, MapPin, Plus, Users } from 'lucide-react'
 import Link from 'next/link'
 import { getMyRequests } from '@/lib/actions/request'
+import type { RequestItem } from '@/types/dashboard'
 
 const statusColors: Record<string, string> = {
     PENDING: 'text-yellow-700 bg-yellow-50 border-yellow-200 dark:text-yellow-400 dark:bg-yellow-950/30 dark:border-yellow-900',
@@ -56,7 +57,7 @@ export default async function RequestsPage({ searchParams }: { searchParams: Pro
             {/* Request Cards */}
             {requests.length > 0 ? (
                 <div className="space-y-4">
-                    {requests.map((request) => (
+                    {requests.map((request: RequestItem) => (
                         <div
                             key={request.id}
                             className="rounded-(--radius) border p-5 duration-200 hover:shadow-md hover:shadow-zinc-950/5">

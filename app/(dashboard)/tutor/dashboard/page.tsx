@@ -8,6 +8,7 @@ import { BookOpen, Star } from 'lucide-react'
 import { getTutorDashboardData } from '@/lib/actions/tutor'
 import { redirect } from 'next/navigation'
 import { ApproveButton, RejectButton } from '@/components/tutor/action-buttons'
+import type { TutorPendingRequest, TutorSessionItem } from '@/types/dashboard'
 
 function formatDate(date: Date | string) {
     return new Date(date).toLocaleDateString('id-ID', { weekday: 'short', day: 'numeric', month: 'short' })
@@ -67,7 +68,7 @@ export default async function TutorDashboardPage() {
 
                 {pendingRequests.length > 0 ? (
                     <div className="space-y-4">
-                        {pendingRequests.map((request) => (
+                        {pendingRequests.map((request: TutorPendingRequest) => (
                             <div
                                 key={request.id}
                                 className="rounded-(--radius) border p-5">
@@ -144,7 +145,7 @@ export default async function TutorDashboardPage() {
                 </h2>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                    {upcomingSessions.map((session) => (
+                    {upcomingSessions.map((session: TutorSessionItem) => (
                         <Link
                             key={session.id}
                             href={`/sessions/${session.id}`}

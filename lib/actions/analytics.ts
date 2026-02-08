@@ -116,12 +116,12 @@ export async function getAnalyticsData() {
             }
             return { status: labels[r.status] || r.status, count: r._count }
         }),
-        requestsByMonth: Object.entries(requestsByMonth).map(([month, data]) => ({
+        requestsByMonth: Object.entries(requestsByMonth).map(([month, data]: [string, { total: number; completed: number }]) => ({
             month,
             total: data.total,
             completed: data.completed,
         })),
-        usersByMonth: Object.entries(usersByMonth).map(([month, count]) => ({
+        usersByMonth: Object.entries(usersByMonth).map(([month, count]: [string, number]) => ({
             month,
             count,
         })),

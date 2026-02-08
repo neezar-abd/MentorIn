@@ -48,7 +48,7 @@ export default async function SessionsPage() {
 
                 {upcomingSessions.length > 0 ? (
                     <div className="space-y-4">
-                        {upcomingSessions.map((session) => (
+                        {upcomingSessions.map((session: SessionItem) => (
                             <Link
                                 key={session.id}
                                 href={`/sessions/${session.id}`}
@@ -108,7 +108,7 @@ export default async function SessionsPage() {
 
                 {completedSessions.length > 0 ? (
                     <div className="space-y-4">
-                        {completedSessions.map((session) => (
+                        {completedSessions.map((session: SessionItem) => (
                             <Link
                                 key={session.id}
                                 href={`/sessions/${session.id}`}

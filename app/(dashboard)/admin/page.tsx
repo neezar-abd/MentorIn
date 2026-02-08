@@ -64,7 +64,7 @@ export default async function AdminPage() {
                 </h2>
 
                 <div className="space-y-4">
-                    {pendingTutors.map((tutor) => (
+                    {pendingTutors.map((tutor: { id: string; subjects: string[]; bio: string | null; createdAt: Date; user: { name: string; email: string; class: string | null; avatarUrl: string | null } }) => (
                         <div
                             key={tutor.id}
                             className="rounded-(--radius) border p-5">
@@ -75,7 +75,7 @@ export default async function AdminPage() {
                                             <AvatarFallback className="text-xs">
                                                 {tutor.user.name
                                                     .split(' ')
-                                                    .map((n) => n[0])
+                                                    .map((n: string) => n[0])
                                                     .join('')}
                                             </AvatarFallback>
                                         </Avatar>
@@ -126,7 +126,7 @@ export default async function AdminPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {recentUsers.map((user) => (
+                                {recentUsers.map((user: { id: string; name: string; email: string; role: string; class: string | null; createdAt: Date }) => (
                                     <tr
                                         key={user.id}
                                         className="border-b last:border-0">

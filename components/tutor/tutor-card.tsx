@@ -27,7 +27,7 @@ export default function TutorCard({ tutor, className }: TutorCardProps) {
     const getInitials = (name: string) => {
         return name
             .split(' ')
-            .map((n) => n[0])
+            .map((n: string) => n[0])
             .join('')
             .toUpperCase()
             .slice(0, 2)
@@ -65,7 +65,7 @@ export default function TutorCard({ tutor, className }: TutorCardProps) {
 
             {/* Subjects */}
             <div className="mt-4 flex flex-wrap gap-1.5">
-                {tutor.subjects.slice(0, 3).map((subject) => (
+                {tutor.subjects.slice(0, 3).map((subject: string) => (
                     <Badge
                         key={subject}
                         variant="outline">

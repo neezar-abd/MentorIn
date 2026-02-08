@@ -57,7 +57,7 @@ export function RequestForm({ tutorId, tutorSubjects }: RequestFormProps) {
                             disabled={isPending}
                             className="border-input bg-background ring-offset-background focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-sm transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50">
                             <option value="">Pilih mata pelajaran</option>
-                            {tutorSubjects.map((subject) => (
+                            {tutorSubjects.map((subject: string) => (
                                 <option key={subject} value={subject}>{subject}</option>
                             ))}
                         </select>

@@ -55,7 +55,7 @@ export async function submitReview(formData: FormData): Promise<ActionResult> {
         where: { tutorId: request.tutorId },
         select: { rating: true },
     })
-    const avgRating = allReviews.reduce((sum, r) => sum + r.rating, 0) / allReviews.length
+    const avgRating = allReviews.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / allReviews.length
 
     await prisma.tutorProfile.update({
         where: { id: request.tutorId },

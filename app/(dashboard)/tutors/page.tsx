@@ -6,6 +6,7 @@ import Pagination from '@/components/ui/pagination'
 import { Search } from 'lucide-react'
 import { getVerifiedTutors } from '@/lib/actions/tutor'
 import Link from 'next/link'
+import type { TutorListItem } from '@/types/dashboard'
 
 const subjects = ['Semua', 'Matematika', 'Fisika', 'Kimia', 'Biologi', 'Bahasa Inggris', 'Bahasa Indonesia', 'Sejarah', 'Ekonomi', 'Sosiologi', 'Geografi']
 
@@ -52,7 +53,7 @@ export default async function TutorsPage({ searchParams }: { searchParams: Promi
 
                 {tutors.length > 0 ? (
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {tutors.map((tutor) => (
+                        {tutors.map((tutor: TutorListItem) => (
                             <TutorCard key={tutor.id} tutor={tutor} />
                         ))}
                     </div>

@@ -6,6 +6,7 @@ import { BookOpen, Calendar, CheckCircle2, ChevronRight, Clock, MapPin, MessageC
 import Link from 'next/link'
 import { getTutorById } from '@/lib/actions/tutor'
 import { notFound } from 'next/navigation'
+import type { TutorDetail } from '@/types/dashboard'
 
 function formatDate(date: Date | string) {
     return new Date(date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -56,7 +57,7 @@ export default async function TutorDetailPage({ params }: { params: Promise<{ id
 
                         {/* Subjects */}
                         <div className="flex flex-wrap gap-1.5">
-                            {tutor.subjects.map((subject) => (
+                            {tutor.subjects.map((subject: string) => (
                                 <Badge key={subject} variant="outline">{subject}</Badge>
                             ))}
                         </div>
@@ -81,11 +82,11 @@ export default async function TutorDetailPage({ params }: { params: Promise<{ id
                     <h2 className="font-medium">Jadwal Tersedia</h2>
                     <div className="rounded-(--radius) border">
                         <div className="divide-y">
-                            {Object.entries(availability).map(([day, slots]) => (
+                            {Object.entries(availability).map(([day, slots]: [string, unknown]) => (
                                 <div key={day} className="flex items-center gap-4 px-5 py-3">
                                     <span className="w-20 font-medium">{day}</span>
                                     <div className="flex flex-wrap gap-2">
-                                        {(slots as string[]).map((slot) => (
+                                        {(slots as string[]).map((slot: string) => (
                                             <div key={slot} className="text-muted-foreground flex items-center gap-1.5 text-sm">
                                                 <Clock className="size-3.5" />
                                                 <span>{slot}</span>
@@ -106,7 +107,7 @@ export default async function TutorDetailPage({ params }: { params: Promise<{ id
                 </div>
                 {tutor.reviews.length > 0 ? (
                     <div className="space-y-4">
-                        {tutor.reviews.map((review) => (
+                        {tutor.reviews.map((review: TutorDetail['reviews'][number]) => (
                             <div key={review.id} className="rounded-(--radius) border p-5">
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-center gap-3">

@@ -64,7 +64,7 @@ export default async function AdminAnalyticsPage() {
                     <h3 className="mb-4 text-sm font-medium">Tutor Terbaik</h3>
                     {topTutors.length > 0 ? (
                         <div className="space-y-3">
-                            {topTutors.map((tutor, i) => (
+                            {topTutors.map((tutor: { name: string; sessions: number; rating: number }, i: number) => (
                                 <div key={i} className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
                                         <span className="text-muted-foreground flex size-6 items-center justify-center text-xs font-medium">

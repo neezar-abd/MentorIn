@@ -12,7 +12,7 @@ export default function AvatarUpload({ name, avatarUrl }: { name: string; avatar
     const [isUploading, setIsUploading] = useState(false)
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const initials = name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+    const initials = name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
 
     async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0]

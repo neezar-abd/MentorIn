@@ -164,7 +164,7 @@ export default async function DashboardPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {recentRequests.map((request) => (
+                                {recentRequests.map((request: SessionItem) => (
                                     <tr
                                         key={request.id}
                                         className="border-b last:border-0">
