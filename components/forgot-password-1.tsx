@@ -23,7 +23,6 @@ export default function ForgotPassword() {
                     <p className="text-muted-foreground mt-2 text-sm">Enter your email and we'll send you a reset link</p>
                 </div>
                 <Card
-                    variant="outline"
                     className="mt-6 p-8">
                     <form
                         action=""

@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { RequestForm } from '@/components/request/request-form'
 
 function getInitials(name: string) {
-    return name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+    return name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
 }
 
 export default async function NewRequestPage({ searchParams }: { searchParams: Promise<{ tutorId?: string }> }) {
@@ -38,7 +38,7 @@ export default async function NewRequestPage({ searchParams }: { searchParams: P
                         <div className="mt-1 flex items-center gap-1.5">
                             <span className="text-muted-foreground text-sm">Kelas {tutor.user.class}</span>
                             <span className="text-muted-foreground text-sm">·</span>
-                            {tutor.subjects.map((s) => (
+                            {tutor.subjects.map((s: string) => (
                                 <Badge key={s} variant="outline" className="text-[10px]">{s}</Badge>
                             ))}
                         </div>

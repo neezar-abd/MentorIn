@@ -5,6 +5,7 @@ import prisma from '@/lib/prisma'
 import { tutorRegisterSchema } from '@/lib/validations'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import type { TutorPendingRequest } from '@/types/dashboard'
 
 export type ActionResult = {
     success: boolean
@@ -63,6 +64,7 @@ export async function registerAsTutor(formData: FormData): Promise<ActionResult>
     // Sign out to clear old session (role has changed)
     // User needs to login again to get updated role in session
     await signOut({ redirectTo: '/login?registered=tutor' })
+    return { success: true } // Unreachable due to redirect, but needed for TypeScript
 }
 
 export async function getVerifiedTutors(options?: { subject?: string; search?: string; page?: number; perPage?: number }) {
@@ -131,9 +133,9 @@ export async function getTutorDashboardData() {
 
     if (!tutorProfile) return null
 
-    const pendingRequests = tutorProfile.requests.filter((r) => r.status === 'PENDING')
-    const upcomingSessions = tutorProfile.requests.filter((r) => r.status === 'APPROVED' && r.scheduledAt > new Date())
-    const completedSessions = tutorProfile.requests.filter((r) => r.status === 'COMPLETED')
+    const pendingRequests = tutorProfile.requests.filter((r: TutorPendingRequest) => r.status === 'PENDING')
+    const upcomingSessions = tutorProfile.requests.filter((r: TutorPendingRequest) => r.status === 'APPROVED' && r.scheduledAt > new Date())
+    const completedSessions = tutorProfile.requests.filter((r: TutorPendingRequest) => r.status === 'COMPLETED')
 
     return {
         tutorProfile,

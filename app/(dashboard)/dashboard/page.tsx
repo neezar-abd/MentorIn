@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { getDashboardData } from '@/lib/actions/dashboard'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
+import type { SessionItem } from '@/types/dashboard'
 
 const statusColors: Record<string, string> = {
     PENDING: 'text-yellow-700 bg-yellow-50 border-yellow-200 dark:text-yellow-400 dark:bg-yellow-950/30 dark:border-yellow-900',
@@ -84,7 +85,7 @@ export default async function DashboardPage() {
 
                 {upcomingSessions.length > 0 ? (
                     <div className="grid gap-4 md:grid-cols-2">
-                        {upcomingSessions.map((s) => (
+                        {upcomingSessions.map((s: SessionItem) => (
                             <Link
                                 key={s.id}
                                 href={`/sessions/${s.id}`}

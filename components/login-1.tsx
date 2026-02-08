@@ -32,7 +32,6 @@ export default function Login({ registered, callbackUrl }: { registered?: string
                     <p className="text-muted-foreground mt-2 text-sm">Masuk ke akun kamu untuk melanjutkan</p>
                 </div>
                 <Card
-                    variant="outline"
                     className="mt-6 p-8">
                     {registered === 'tutor' && (
                         <div className="mb-4 rounded-(--radius) border border-green-200 bg-green-50 p-3 text-sm text-green-700 dark:border-green-900 dark:bg-green-950/30 dark:text-green-400">

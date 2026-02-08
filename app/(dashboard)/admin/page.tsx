@@ -85,7 +85,7 @@ export default async function AdminPage() {
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap gap-1.5">
-                                        {tutor.subjects.map((s) => (
+                                        {tutor.subjects.map((s: string) => (
                                             <Badge
                                                 key={s}
                                                 variant="outline">

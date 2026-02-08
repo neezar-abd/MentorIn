@@ -19,12 +19,11 @@ export async function getExportData() {
     if (!user) return null
 
     // Get completed sessions
-    let completedSessions
     if (role === 'TUTOR') {
         const tp = await prisma.tutorProfile.findUnique({ where: { userId }, select: { id: true, rating: true, totalSessions: true, subjects: true } })
         if (!tp) return null
 
-        completedSessions = await prisma.request.findMany({
+        const completedSessions = await prisma.request.findMany({
             where: { tutorId: tp.id, status: 'COMPLETED' },
             include: {
                 student: { select: { name: true, class: true } },
@@ -37,7 +36,7 @@ export async function getExportData() {
             user,
             role: 'TUTOR' as const,
             tutorProfile: tp,
-            sessions: completedSessions.map((s) => ({
+            sessions: completedSessions.map((s: typeof completedSessions[number]) => ({
                 id: s.id,
                 subject: s.subject,
                 topic: s.topic,
@@ -51,7 +50,7 @@ export async function getExportData() {
             })),
         }
     } else {
-        completedSessions = await prisma.request.findMany({
+        const completedSessions = await prisma.request.findMany({
             where: { studentId: userId, status: 'COMPLETED' },
             include: {
                 tutor: { include: { user: { select: { name: true } } } },
@@ -63,7 +62,7 @@ export async function getExportData() {
         return {
             user,
             role: 'STUDENT' as const,
-            sessions: completedSessions.map((s) => ({
+            sessions: completedSessions.map((s: typeof completedSessions[number]) => ({
                 id: s.id,
                 subject: s.subject,
                 topic: s.topic,

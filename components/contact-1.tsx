@@ -42,7 +42,6 @@ export default function Contact() {
                     </div>
 
                     <Card
-                        variant="outline"
                         className="@xl:col-span-3 p-6">
                         <form
                             action=""

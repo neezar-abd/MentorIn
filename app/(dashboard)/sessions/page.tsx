@@ -4,6 +4,7 @@ import EmptyState from '@/components/ui/empty-state'
 import { Calendar, CheckCircle2, ChevronRight, Clock, MapPin, Star, Users } from 'lucide-react'
 import Link from 'next/link'
 import { getMyRequests } from '@/lib/actions/request'
+import type { SessionItem } from '@/types/dashboard'
 
 const statusConfig: Record<string, { label: string; className: string }> = {
     APPROVED: {
@@ -27,8 +28,8 @@ function formatTime(date: Date | string) {
 export default async function SessionsPage() {
     const { requests: allRequests } = await getMyRequests({ perPage: 100 })
     // Sessions = approved (upcoming) + completed
-    const upcomingSessions = allRequests.filter((r) => r.status === 'APPROVED')
-    const completedSessions = allRequests.filter((r) => r.status === 'COMPLETED')
+    const upcomingSessions = allRequests.filter((r: SessionItem) => r.status === 'APPROVED')
+    const completedSessions = allRequests.filter((r: SessionItem) => r.status === 'COMPLETED')
 
     return (
         <div className="space-y-10">

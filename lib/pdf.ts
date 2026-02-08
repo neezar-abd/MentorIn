@@ -69,8 +69,8 @@ export function generateReportPDF(data: ReportData) {
     y += 6
 
     // Stats summary
-    const totalHours = data.sessions.reduce((sum, s) => sum + s.duration, 0) / 60
-    const avgRating = data.sessions.filter((s) => s.rating).reduce((sum, s) => sum + (s.rating || 0), 0) / (data.sessions.filter((s) => s.rating).length || 1)
+    const totalHours = data.sessions.reduce((sum: number, s: ReportData['sessions'][number]) => sum + s.duration, 0) / 60
+    const avgRating = data.sessions.filter((s: ReportData['sessions'][number]) => s.rating).reduce((sum: number, s: ReportData['sessions'][number]) => sum + (s.rating || 0), 0) / (data.sessions.filter((s: ReportData['sessions'][number]) => s.rating).length || 1)
 
     doc.setFontSize(12)
     doc.setFont('helvetica', 'bold')
@@ -101,7 +101,7 @@ export function generateReportPDF(data: ReportData) {
 
     // Table rows
     doc.setFont('helvetica', 'normal')
-    data.sessions.forEach((s) => {
+    data.sessions.forEach((s: ReportData['sessions'][number]) => {
         if (y > 270) {
             doc.addPage()
             y = 20

@@ -75,7 +75,7 @@ export async function getAnalyticsData() {
         const key = `${monthNames[d.getMonth()]} ${d.getFullYear().toString().slice(2)}`
         requestsByMonth[key] = { total: 0, completed: 0 }
     }
-    requestsPerMonth.forEach((r) => {
+    requestsPerMonth.forEach((r: { createdAt: Date; status: string }) => {
         const d = new Date(r.createdAt)
         const key = `${monthNames[d.getMonth()]} ${d.getFullYear().toString().slice(2)}`
         if (requestsByMonth[key]) {
@@ -91,7 +91,7 @@ export async function getAnalyticsData() {
         const key = `${monthNames[d.getMonth()]} ${d.getFullYear().toString().slice(2)}`
         usersByMonth[key] = 0
     }
-    usersPerMonth.forEach((u) => {
+    usersPerMonth.forEach((u: { createdAt: Date }) => {
         const d = new Date(u.createdAt)
         const key = `${monthNames[d.getMonth()]} ${d.getFullYear().toString().slice(2)}`
         if (usersByMonth[key] !== undefined) usersByMonth[key]++
@@ -105,11 +105,11 @@ export async function getAnalyticsData() {
             totalReviews,
             avgRating: avgRating._avg.rating ? Math.round(avgRating._avg.rating * 10) / 10 : 0,
         },
-        usersPerRole: usersPerRole.map((r) => ({
+        usersPerRole: usersPerRole.map((r: { role: string; _count: number }) => ({
             role: r.role === 'STUDENT' ? 'Siswa' : r.role === 'TUTOR' ? 'Tutor' : 'Admin',
             count: r._count,
         })),
-        requestsPerStatus: requestsPerStatus.map((r) => {
+        requestsPerStatus: requestsPerStatus.map((r: { status: string; _count: number }) => {
             const labels: Record<string, string> = {
                 PENDING: 'Menunggu', APPROVED: 'Disetujui', REJECTED: 'Ditolak',
                 COMPLETED: 'Selesai', CANCELLED: 'Dibatalkan',
@@ -125,11 +125,11 @@ export async function getAnalyticsData() {
             month,
             count,
         })),
-        topSubjects: topSubjects.map((s) => ({
+        topSubjects: topSubjects.map((s: { subject: string; _count: number }) => ({
             subject: s.subject,
             count: s._count,
         })),
-        topTutors: topTutors.map((t) => ({
+        topTutors: topTutors.map((t: { user: { name: string }; totalSessions: number; rating: number }) => ({
             name: t.user.name,
             sessions: t.totalSessions,
             rating: t.rating,

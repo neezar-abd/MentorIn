@@ -28,7 +28,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
     const tutorName = session.tutor.user.name
     const tutorInitials = tutorName
         .split(' ')
-        .map((n) => n[0])
+        .map((n: string) => n[0])
         .join('')
         .slice(0, 2)
         .toUpperCase()

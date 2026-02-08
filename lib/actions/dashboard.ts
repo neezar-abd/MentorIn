@@ -2,6 +2,7 @@
 
 import { auth } from '@/lib/auth'
 import prisma from '@/lib/prisma'
+import type { RequestItem } from '@/types/dashboard'
 
 export async function getDashboardData() {
     const session = await auth()
@@ -27,16 +28,16 @@ export async function getDashboardData() {
         }),
     ])
 
-    const upcomingSessions = requests.filter((r) => r.status === 'APPROVED' && r.scheduledAt > new Date())
+    const upcomingSessions = requests.filter((r: RequestItem) => r.status === 'APPROVED' && r.scheduledAt > new Date())
     const recentRequests = requests.slice(0, 5)
 
     // Calculate total hours from completed sessions
-    const totalHours = requests.filter((r) => r.status === 'COMPLETED').reduce((sum, r) => sum + r.duration, 0) / 60
+    const totalHours = requests.filter((r: RequestItem) => r.status === 'COMPLETED').reduce((sum: number, r: RequestItem) => sum + r.duration, 0) / 60
 
     const thisMonth = new Date()
     thisMonth.setDate(1)
     thisMonth.setHours(0, 0, 0, 0)
-    const sessionsThisMonth = requests.filter((r) => r.status === 'COMPLETED' && r.createdAt >= thisMonth).length
+    const sessionsThisMonth = requests.filter((r: RequestItem) => r.status === 'COMPLETED' && r.createdAt >= thisMonth).length
 
     return {
         stats: {

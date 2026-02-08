@@ -61,7 +61,7 @@ export default function CalendarView({
 
     // Group sessions by day
     const sessionsByDay: Record<number, CalendarSession[]> = {}
-    initialSessions.forEach((s) => {
+    initialSessions.forEach((s: CalendarSession) => {
         const day = new Date(s.scheduledAt).getDate()
         if (!sessionsByDay[day]) sessionsByDay[day] = []
         sessionsByDay[day].push(s)
@@ -156,7 +156,7 @@ export default function CalendarView({
                                 </span>
                                 {hasSessions && (
                                     <div className="mt-0.5 space-y-0.5">
-                                        {sessionsByDay[day].slice(0, 2).map((s) => (
+                                        {sessionsByDay[day].slice(0, 2).map((s: CalendarSession) => (
                                             <div
                                                 key={s.id}
                                                 className={cn(
@@ -195,7 +195,7 @@ export default function CalendarView({
 
                     {selectedSessions.length > 0 ? (
                         <div className="space-y-2">
-                            {selectedSessions.map((s) => (
+                            {selectedSessions.map((s: CalendarSession) => (
                                 <Link
                                     key={s.id}
                                     href={`/sessions/${s.id}`}

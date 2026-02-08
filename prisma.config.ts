@@ -7,7 +7,6 @@ import { config } from "dotenv";
 config({ path: path.resolve(process.cwd(), ".env.local"), override: true });
 
 export default defineConfig({
-  earlyAccess: true,
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",

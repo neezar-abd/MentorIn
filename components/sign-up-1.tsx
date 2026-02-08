@@ -32,7 +32,6 @@ export default function SignUp() {
                     <p className="text-muted-foreground mt-2 text-sm">Daftar gratis dan mulai belajar bersama</p>
                 </div>
                 <Card
-                    variant="outline"
                     className="mt-6 p-8">
                     {state?.error && (
                         <div className="mb-4 rounded-(--radius) border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
